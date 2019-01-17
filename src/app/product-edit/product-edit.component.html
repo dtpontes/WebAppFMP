@@ -1,0 +1,39 @@
+<div>
+  <h2>Product Edit</h2>
+  <div>
+    <label>Nome:
+      <input [(ngModel)]="productData.nome" placeholder="Nome"/>
+    </label><br>
+    <label>Cidade:
+      <input [(ngModel)]="productData.cidadeId" placeholder="Cidade"/>
+    </label><br>
+    <label>Endereço:
+      <input [(ngModel)]="productData.endereco" placeholder="Endereco"/>
+    </label><br>
+    <label>Complemento:
+      <input [(ngModel)]="productData.complemento" placeholder="Complemento"/>
+    </label><br>
+    <label>Cep:
+      <input [(ngModel)]="productData.cep" placeholder="Cep"/>
+    </label><br>
+    <label>Celular:
+      <input [(ngModel)]="productData.telCelular" placeholder="Celular"/>
+    </label><br>
+    <label>Residencial:
+      <input [(ngModel)]="productData.telResidencial" placeholder="Residencial"/>
+    </label><br>
+    <label>Email:
+      <input [(ngModel)]="productData.email" placeholder="Email"/>
+    </label><br>    
+    <label>Creditos:
+      <input [(ngModel)]="productData.creditos" placeholder="Creditos"/>
+    </label><br>
+    <label>CPF:
+      <input [(ngModel)]="productData.cpf" placeholder="CPF"/>
+    </label><br>
+    <label>Rg:
+      <input [(ngModel)]="productData.rg" placeholder="RG"/>
+    </label><br>
+  </div>
+  <button (click)="updateProduct()">Update</button>
+</div>
