@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
@@ -20,6 +20,8 @@ const httpOptions = {
 export class RestService {
 
   constructor(private http: HttpClient) { }
+
+  mostrarMenuEmitter = new EventEmitter<boolean>();
 
   private extractData(res: Response) {
     let body = res;
@@ -58,9 +60,11 @@ export class RestService {
   }
 
   //USUARIO
-  getUsuario(login, senha): Observable<any> {
-    return this.http.get(endpoint + 'usuario/getLoginSenha?login=' + login +'&senha='+senha).pipe(
-      map(this.extractData));
+  getUsuario(login, senha): boolean {
+    var retornoGet : boolean ;
+    this.http.get(endpoint + 'usuario/getLoginSenha?login=' + login +'&senha='+senha).subscribe((x : boolean)=> retornoGet = x);
+    console.log(retornoGet);
+    return null;
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

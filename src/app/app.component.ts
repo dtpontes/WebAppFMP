@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RestService } from './rest.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular6-httpclient';
+  title = 'FMP';
+
+  mostrarMenu : boolean = false;
+
+  constructor(private restService:RestService){
+
+  }
+
+  ngOnInit(){
+    console.log(this.restService.mostrarMenuEmitter);
+    this.restService.mostrarMenuEmitter.subscribe(
+      mostrar => {this.mostrarMenu = mostrar}
+    );
+  }
+
 }
