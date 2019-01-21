@@ -28,7 +28,7 @@ export class RestService {
     return body;
   }
 
-  getProducts(): Observable<any> {
+  getPacientes(): Observable<any> {
     return this.http.get(endpoint + 'values').pipe(
       map(this.extractData));
   }

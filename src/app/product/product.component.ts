@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
 
   getProducts() {
     this.products = [];
-    this.rest.getProducts().subscribe((data: {}) => {
+    this.rest.getPacientes().subscribe((data: {}) => {
       console.log(data);
       this.products = data;
     });

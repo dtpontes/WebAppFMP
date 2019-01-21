@@ -16,10 +16,10 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    console.log(this.restService.mostrarMenuEmitter);
-    this.restService.mostrarMenuEmitter.subscribe(
-      mostrar => {this.mostrarMenu = mostrar}
-    );
+    // console.log("this.restService.mostrarMenuEmitter");
+    // this.restService.mostrarMenuEmitter.subscribe(
+    //   mostrar => {this.mostrarMenu = mostrar}
+    // );
   }
 
 }

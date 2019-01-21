@@ -13,13 +13,14 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { LoginComponent } from './login/login.component';
+import { PacienteComponent } from './paciente/paciente.component';
 
 const appRoutes: Routes = [
   {
     path: 'products',
     component: ProductComponent,
     data: { title: 'Product List' }
-  },
+  },  
   {
     path: 'product-detail/:id',
     component: ProductDetailComponent,
@@ -38,6 +39,11 @@ const appRoutes: Routes = [
   { path: '',
     component: LoginComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'paciente',
+    component: PacienteComponent,
+    data: { title: 'Paciente' }
   }
 ];
 
@@ -48,7 +54,8 @@ const appRoutes: Routes = [
     ProductAddComponent,
     ProductDetailComponent,
     ProductEditComponent,    
-    LoginComponent
+    LoginComponent,
+    PacienteComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
