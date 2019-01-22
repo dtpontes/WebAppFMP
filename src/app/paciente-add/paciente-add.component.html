@@ -1,0 +1,48 @@
+
+    <h2>Cadatrar Pacientes</h2>
+
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input  [(ngModel)]="paciente.nome"  [ngModelOptions]="{standalone: true}" matInput placeholder="Nome">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input [(ngModel)]="paciente.endereco"  [ngModelOptions]="{standalone: true}" matInput placeholder="Endereço">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.complemento"  [ngModelOptions]="{standalone: true}" matInput placeholder="Complemento">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.cep"  [ngModelOptions]="{standalone: true}" matInput placeholder="Cep">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.telCelular"  [ngModelOptions]="{standalone: true}" matInput placeholder="Telefone Celular">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.telResidencial"  [ngModelOptions]="{standalone: true}"matInput placeholder="Telefone Residencial">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.email"  [ngModelOptions]="{standalone: true}" matInput placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.cpf"  [ngModelOptions]="{standalone: true}"matInput placeholder="CPF">
+    </mat-form-field>
+
+    <mat-form-field class="example-50-width">
+        <input [(ngModel)]="paciente.rg"  [ngModelOptions]="{standalone: true}"matInput placeholder="RG">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input [(ngModel)]="paciente.creditos"  [ngModelOptions]="{standalone: true}"matInput placeholder="Quantidade de créditos">
+    </mat-form-field>
+
+    <button mat-mat-raised-button (click)="salvarPaciente()" color='green'>Click me!</button>
+
+  </form>

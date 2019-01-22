@@ -1,3 +1,4 @@
+import { Paciente } from './paciente/paciente';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -67,9 +68,20 @@ export class RestService {
     return null;
   }
 
+  //PAciente
+
+  addPaciente (paciente: Paciente): Observable<any> {    
+    console.log(JSON.stringify(paciente));    
+    console.log(endpoint + 'values');   
+    return this.http.post<Paciente>(endpoint + 'values', JSON.stringify(paciente), httpOptions).pipe(
+    tap((paciente) => console.log(`added paciente w/ id=${paciente.pacienteId}`)),
+    catchError(this.handleError<any>('addPaciente'))
+  );
+}
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-  
+      console.log("passei aqui");
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
   

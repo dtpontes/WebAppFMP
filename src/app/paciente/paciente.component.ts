@@ -12,7 +12,7 @@ import { Paciente } from './paciente';
 export class PacienteComponent implements OnInit {
 
   private pacientes : Paciente[] ;
-  displayedColumns: string[] = ['nome','endereco','cpf','actionsColumn'];  
+  displayedColumns: string[] = ['pacienteId','nome','endereco','cpf','actionsColumn'];  
 
   constructor(public rest:RestService, private route: ActivatedRoute, private router: Router)  {
 
@@ -29,7 +29,16 @@ export class PacienteComponent implements OnInit {
       this.pacientes = data; 
       console.log(this.pacientes[0].endereco);    
       
-    });
+    });    
+  }
+
+  inserirPaciente() {
+    this.router.navigate(['/paciente-add']);
+  }
+
+  editarPaciente(paciente:Paciente) {
+    console.log(paciente.pacienteId);
+    this.router.navigate(['/paciente-edit/'+paciente.pacienteId]);
   }
 
 }

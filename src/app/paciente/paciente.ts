@@ -1,14 +1,14 @@
 export class Paciente{
-    pacienteid: number;
+    pacienteId: number;
     nome : string;
-    cidadeid : number;
+    cidadeId : number;
     endereco: string;
     complemento : string;
     cep: string;
-    telcelular: string;
-    telresidencial: string;
+    telCelular: string;
+    telResidencial: string;
     email: string;
-    datacadastro : string;
+    dataCadastro : string;
     creditos: number;
     cpf: string;
     rg: string;

@@ -14,6 +14,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { LoginComponent } from './login/login.component';
 import { PacienteComponent } from './paciente/paciente.component';
+import { PacienteAddComponent } from './paciente-add/paciente-add.component';
+import { PacienteEditComponent } from './paciente-edit/paciente-edit.component';
 
 const appRoutes: Routes = [
   {
@@ -44,6 +46,16 @@ const appRoutes: Routes = [
     path: 'paciente',
     component: PacienteComponent,
     data: { title: 'Paciente' }
+  },
+  {
+    path: 'paciente-edit/:id',
+    component: PacienteEditComponent,
+    data: { title: 'Edição de paciente' }
+  },
+  {
+    path: 'paciente-add',
+    component: PacienteAddComponent,
+    data: { title: 'Inserir Paciente' }
   }
 ];
 
@@ -55,7 +67,9 @@ const appRoutes: Routes = [
     ProductDetailComponent,
     ProductEditComponent,    
     LoginComponent,
-    PacienteComponent
+    PacienteComponent,
+    PacienteAddComponent,
+    PacienteEditComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
