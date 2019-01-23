@@ -29,10 +29,7 @@ export class RestService {
     return body;
   }
 
-  getPacientes(): Observable<any> {
-    return this.http.get(endpoint + 'values').pipe(
-      map(this.extractData));
-  }
+  
   
   getProduct(id): Observable<any> {
     return this.http.get(endpoint + 'values/' + id).pipe(
@@ -70,13 +67,42 @@ export class RestService {
 
   //PAciente
 
-  addPaciente (paciente: Paciente): Observable<any> {    
+  getPacientes(): Observable<any> {
+    return this.http.get(endpoint + 'paciente').pipe(
+      map(this.extractData));
+  }
+
+  addPaciente (paciente: Paciente): Observable<any> { 
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');   
     console.log(JSON.stringify(paciente));    
     console.log(endpoint + 'values');   
-    return this.http.post<Paciente>(endpoint + 'values', JSON.stringify(paciente), httpOptions).pipe(
+    return this.http.post<Paciente>(endpoint + 'paciente', JSON.stringify(paciente), httpOptions).pipe(
     tap((paciente) => console.log(`added paciente w/ id=${paciente.pacienteId}`)),
     catchError(this.handleError<any>('addPaciente'))
   );
+}
+
+getPacientePorId(id): Observable<any> {
+  return this.http.get(endpoint + 'paciente/' + id).pipe(
+    map(this.extractData));
+}
+
+updatePaciente (id, paciente): Observable<any> {      
+  return this.http.put(endpoint + 'paciente/' + id, JSON.stringify(paciente), httpOptions).pipe(
+    tap(_ => console.log(`updated paciente id=${id}`)),
+    catchError(this.handleError<any>('updatePacient'))
+  );
+}
+
+getEstados(): Observable<any> {
+  return this.http.get(endpoint + 'paciente/ObterEstados').pipe(
+    map(this.extractData));
+}
+
+getCidadePorIdEstado(id): Observable<any> {
+  return this.http.get(endpoint + 'paciente/ObterCidadesPorIdEstado/' + id).pipe(
+    map(this.extractData));
 }
 
   private handleError<T> (operation = 'operation', result?: T) {

@@ -1,6 +1,7 @@
 
 import {NgModule} from "@angular/core";
 import { CommonModule } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
 import {
   MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
   MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule, MatIconRegistry
@@ -19,7 +20,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   MatMenuModule,
   MatIconModule,
   MatProgressSpinnerModule,
-  BrowserAnimationsModule
+  BrowserAnimationsModule,
+  MatSelectModule
   ],
   exports: [
   CommonModule,
@@ -32,7 +34,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
    MatMenuModule,
    MatIconModule,
    MatProgressSpinnerModule,
-   BrowserAnimationsModule
+   BrowserAnimationsModule,
+   MatSelectModule
    ],
 })
 export class CustomMaterialModule { }
