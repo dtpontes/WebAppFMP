@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { PacienteAddComponent } from './paciente-add/paciente-add.component';
 import { PacienteEditComponent } from './paciente-edit/paciente-edit.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
     LoginComponent,
     PacienteComponent,
     PacienteAddComponent,
-    PacienteEditComponent
+    PacienteEditComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -79,6 +81,7 @@ const appRoutes: Routes = [
     CustomMaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents :[ConfirmDialogComponent]
 })
 export class AppModule { }

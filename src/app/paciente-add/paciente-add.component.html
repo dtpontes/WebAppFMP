@@ -1,66 +1,74 @@
 
-    <h2>Cadatrar Pacientes</h2>
+    <h2>Cadastrar Pacientes</h2>
 
 
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input  [(ngModel)]="paciente.nome"  [ngModelOptions]="{standalone: true}" matInput placeholder="Nome">
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width">
-      <input [(ngModel)]="paciente.endereco"  [ngModelOptions]="{standalone: true}" matInput placeholder="Endereço">
-    </mat-form-field>
+<form  class="normal-form">
+<mat-grid-list cols="3" rowHeight="400" >
+    <mat-grid-tile >
+            <div class="controles-container">
+                <mat-form-field>
+                    <input  [(ngModel)]="paciente.nome"  [ngModelOptions]="{standalone: true}" matInput placeholder="Nome">
+                </mat-form-field>
+                           
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.endereco"  [ngModelOptions]="{standalone: true}" matInput placeholder="Endereço">
+                </mat-form-field>
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.complemento"  [ngModelOptions]="{standalone: true}" matInput placeholder="Complemento">
+                </mat-form-field>                
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.cep"  [ngModelOptions]="{standalone: true}" matInput placeholder="Cep">
+                </mat-form-field>
+                <mat-form-field  >
+                    <mat-select placeholder="Estado" [(value)]="estadoSelecionado" (selectionChange)="carregarEstados()">
+                    <mat-option>Selecione</mat-option>
+                    <mat-option *ngFor="let estado of estados" [value]="estado.estadoId">
+                        {{estado.descricao}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-select placeholder="Cidade">
+                        <mat-option>Selecione</mat-option>
+                        <mat-option *ngFor="let cidade of cidades" [value]="cidade.cidadeId">
+                        {{cidade.descricao}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.complemento"  [ngModelOptions]="{standalone: true}" matInput placeholder="Complemento">
-    </mat-form-field>
+            </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile>
+            <div class="controles-container">
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.telCelular"  [ngModelOptions]="{standalone: true}" matInput placeholder="Telefone Celular">
+                </mat-form-field>
+                
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.telResidencial"  [ngModelOptions]="{standalone: true}"matInput placeholder="Telefone Residencial">
+                </mat-form-field>
+                
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.email"  [ngModelOptions]="{standalone: true}" matInput placeholder="Email">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <input [(ngModel)]="paciente.cpf"  [ngModelOptions]="{standalone: true}" matInput placeholder="CPF">
+                </mat-form-field>
+                
+                <mat-form-field rowspan="2">
+                    <input [(ngModel)]="paciente.rg"  [ngModelOptions]="{standalone: true}" matInput placeholder="RG">
+                </mat-form-field>       
+            </div>
+    </mat-grid-tile>
+    
+    
 
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.cep"  [ngModelOptions]="{standalone: true}" matInput placeholder="Cep">
-    </mat-form-field>
+</mat-grid-list>
+<div class="button-row">
+        <button mat-raised-button (click)="salvarPaciente()" color="primary" type="submit" >Salvar</button>
+        <button mat-raised-button color="warn" (click)="voltar()">Voltar</button>
+</div>   
 
-    <mat-form-field  class="example-50-width">
-        <mat-select placeholder="Estado" [(value)]="estadoSelecionado" (selectionChange)="carregarEstados()">
-          <mat-option>Selecione</mat-option>
-          <mat-option *ngFor="let estado of estados" [value]="estado.estadoId">
-            {{estado.descricao}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field  class="example-50-width">
-        <mat-select placeholder="Cidade">
-          <mat-option>Selecione</mat-option>
-          <mat-option *ngFor="let cidade of cidades" [value]="cidade.cidadeId">
-            {{cidade.descricao}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.telCelular"  [ngModelOptions]="{standalone: true}" matInput placeholder="Telefone Celular">
-    </mat-form-field>
-
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.telResidencial"  [ngModelOptions]="{standalone: true}"matInput placeholder="Telefone Residencial">
-    </mat-form-field>
-
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.email"  [ngModelOptions]="{standalone: true}" matInput placeholder="Email">
-    </mat-form-field>
-
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.cpf"  [ngModelOptions]="{standalone: true}"matInput placeholder="CPF">
-    </mat-form-field>
-
-    <mat-form-field class="example-50-width">
-        <input [(ngModel)]="paciente.rg"  [ngModelOptions]="{standalone: true}"matInput placeholder="RG">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-        <input [(ngModel)]="paciente.creditos"  [ngModelOptions]="{standalone: true}"matInput placeholder="Quantidade de créditos">
-    </mat-form-field>
-
-    <button mat-mat-raised-button (click)="salvarPaciente()" color='green'>Click me!</button>
-
-  </form>
+</form>

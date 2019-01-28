@@ -1,42 +1,71 @@
-<p>
-  Pacientes
-</p>
+<div class="search-div">
+    <button mat-raised-button (click)="inserirPaciente()">
+        <mat-icon>add</mat-icon>Cadastrar Paciente
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Localizar" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey"  (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+        <mat-table [dataSource]="pacientes" matSort>
 
-<table mat-table [dataSource]="pacientes" class="mat-elevation-z8">
+            <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+            
+            <!-- Position Column -->
+            <ng-container matColumnDef="pacienteId">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                <mat-cell *matCellDef="let paciente"> {{paciente.pacienteId}} </mat-cell>
+            </ng-container>
+            
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+                <mat-cell *matCellDef="let paciente"> {{paciente.nome}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="endereco">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Endereço </mat-header-cell>
+                <mat-cell *matCellDef="let paciente"> {{paciente.endereco}} </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="cpf">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> CPF </mat-header-cell>
+                    <mat-cell *matCellDef="let paciente"> {{paciente.cpf}} </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="creditos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Créditos </mat-header-cell>
+                    <mat-cell *matCellDef="let paciente"> {{paciente.creditos}} </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="actionsColumn">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button mat-icon-button matTooltip="Editar" matTooltipPosition="left" (click)="editarPaciente(paciente)"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button matTooltip="Utilizar crédito" matTooltipPosition="above" (click)="utilizarCredito(paciente)"><mat-icon>exposure_neg_1</mat-icon></button>
+                        <button mat-icon-button matTooltip="Comprar créditos" matTooltipPosition="right" (click)="utilizarCredito(paciente)"><mat-icon>monetization_on</mat-icon></button>                        
+                    </mat-cell>                    
+                </ng-container>
+                  <ng-container matColumnDef="loading">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                        Loading data...
+                    </mat-footer-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noData">
+                    <mat-footer-cell *matFooterCellDef colspan="6">
+                        No data.
+                    </mat-footer-cell>
+                    </ng-container>
+                
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':pacientes!=null}"></mat-footer-row>
+                <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(pacientes!=null && pacientes.length==0)}"></mat-footer-row>
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="pacienteId">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let paciente"> {{paciente.pacienteId}} </td>
-      </ng-container>
-  
-    <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let paciente"> {{paciente.nome}} </td>
-    </ng-container>
+</div>
 
-    <ng-container matColumnDef="endereco">
-        <th mat-header-cell *matHeaderCellDef> Endereço </th>
-        <td mat-cell *matCellDef="let paciente"> {{paciente.endereco}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="cpf">
-          <th mat-header-cell *matHeaderCellDef> CPF </th>
-          <td mat-cell *matCellDef="let paciente"> {{paciente.cpf}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actionsColumn">
-          <mat-header-cell *matHeaderCellDef>
-              <button mat-raised-button (click)="inserirPaciente()">Cadastrar Paciente</button>
-          </mat-header-cell>
-          <mat-cell *matCellDef="let paciente">
-              <button mat-raised-button (click)="editarPaciente(paciente)">Editar</button>              
-          </mat-cell>
-      </ng-container>
-    
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>

@@ -4,6 +4,7 @@ import { Paciente } from './../paciente/paciente';
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Estado } from '../paciente/estado';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -36,7 +37,7 @@ export class PacienteAddComponent implements OnInit {
   salvarPaciente() {
     //this.rest.addPaciente(this.paciente);
     this.rest.addPaciente(this.paciente).subscribe((result) => {
-      console.log("Deu cero"); 
+      this.router.navigate(['/paciente']);
   });
   }
 
@@ -67,6 +68,13 @@ export class PacienteAddComponent implements OnInit {
       this.cidades = data;          
       
     });    
+  }
+
+  voltar() {
+    //this.rest.addPaciente(this.paciente);
+    
+      this.router.navigate(['/paciente']);
+  
   }
 
 

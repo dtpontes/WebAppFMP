@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { DialogService } from './../Shared/dialog.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../rest.service';
 import { Paciente } from './paciente';
+import { MatSort, MatTableDataSource , MatPaginator } from '@angular/material';
+
 
 
 @Component({
@@ -11,25 +14,49 @@ import { Paciente } from './paciente';
 })
 export class PacienteComponent implements OnInit {
 
-  private pacientes : Paciente[] ;
-  displayedColumns: string[] = ['pacienteId','nome','endereco','cpf','actionsColumn'];  
+  pacientes : MatTableDataSource<Paciente> ;
+  displayedColumns: string[] = ['pacienteId','nome','endereco','cpf','creditos','actionsColumn']; 
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  searchKey: string;
 
-  constructor(public rest:RestService, private route: ActivatedRoute, private router: Router)  {
-
+  constructor(public rest:RestService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private dialogService: DialogService)  {
   }
 
   ngOnInit() {
-    this.getProducts();
+    this.getPacientes();
   }
 
-  getProducts() {
-    this.pacientes = [];
-    this.rest.getPacientes().subscribe((data: []) => {
-      console.log(data);
-      this.pacientes = data; 
-      console.log(this.pacientes[0].endereco);    
-      
-    });    
+  getPacientes() {
+    this.rest.getPacientes().subscribe(
+      list => {
+        console.log(list);
+        let array = list;
+        this.pacientes = new MatTableDataSource(array);
+        this.pacientes.sort = this.sort;
+        this.pacientes.paginator = this.paginator;
+        this.pacientes.filterPredicate = (data, filter) => {
+          return this.displayedColumns.some(ele => {
+            console.log(data[ele]);
+            console.log(ele);
+
+            return ele != 'actions' &&  data[ele] !=null && data[ele].toString().toLowerCase().indexOf(filter) != -1;
+          });
+        };
+      });
+  }
+  
+
+  onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter();
+  }
+
+  applyFilter() {    
+    this.pacientes.filter = this.searchKey;
   }
 
   inserirPaciente() {
@@ -39,6 +66,23 @@ export class PacienteComponent implements OnInit {
   editarPaciente(paciente:Paciente) {
     console.log(paciente.pacienteId);
     this.router.navigate(['/paciente-edit/'+paciente.pacienteId]);
+  }
+
+  utilizarCredito(paciente:Paciente) {
+    
+    
+
+    this.dialogService.openConfirmDialog("Deseja utilizar o crédito do paciente?").
+    afterClosed().subscribe(res=> {
+      if(res){
+        this.rest.utilizarCredito(paciente).subscribe((result) => {
+          //this.router.navigate(['/paciente']);
+          this.getPacientes();
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    });
   }
 
 }
