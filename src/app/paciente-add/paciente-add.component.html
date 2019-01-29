@@ -1,9 +1,12 @@
 
-    <h2>Cadastrar Pacientes</h2>
+
 
 
 <form  class="normal-form">
-<mat-grid-list cols="3" rowHeight="400" >
+
+<h2>Cadastrar Pacientes</h2>
+    
+<mat-grid-list cols="2" rowHeight="400" >
     <mat-grid-tile >
             <div class="controles-container">
                 <mat-form-field>
@@ -40,7 +43,7 @@
     </mat-grid-tile>
     
     <mat-grid-tile>
-            <div class="controles-container">
+            <div class="controles-container controles-container-segunda">
                 <mat-form-field >
                     <input [(ngModel)]="paciente.telCelular"  [ngModelOptions]="{standalone: true}" matInput placeholder="Telefone Celular">
                 </mat-form-field>
@@ -57,15 +60,18 @@
                     <input [(ngModel)]="paciente.cpf"  [ngModelOptions]="{standalone: true}" matInput placeholder="CPF">
                 </mat-form-field>
                 
-                <mat-form-field rowspan="2">
+                <mat-form-field >
                     <input [(ngModel)]="paciente.rg"  [ngModelOptions]="{standalone: true}" matInput placeholder="RG">
-                </mat-form-field>       
+                </mat-form-field>  
+                
+                <mat-form-field >
+                    <input [(ngModel)]="paciente.daNascimento"  [ngModelOptions]="{standalone: true}" matInput placeholder="Data de Nascimento">
+                </mat-form-field> 
             </div>
-    </mat-grid-tile>
-    
-    
-
+    </mat-grid-tile> 
 </mat-grid-list>
+
+
 <div class="button-row">
         <button mat-raised-button (click)="salvarPaciente()" color="primary" type="submit" >Salvar</button>
         <button mat-raised-button color="warn" (click)="voltar()">Voltar</button>

@@ -18,8 +18,7 @@ export class PacienteEditComponent implements OnInit {
 
     this.paciente ={};
     this.rest.getPacientePorId(this.route.snapshot.params['id']).subscribe((data: {}) => {
-      console.log(data);
-      this.paciente = data;
+       this.paciente = data;
     });
   }
 
@@ -29,6 +28,13 @@ export class PacienteEditComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  voltar() {
+    //this.rest.addPaciente(this.paciente);
+    
+      this.router.navigate(['/paciente']);
+  
   }
 
 }

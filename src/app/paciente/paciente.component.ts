@@ -3,7 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from '../rest.service';
 import { Paciente } from './paciente';
-import { MatSort, MatTableDataSource , MatPaginator } from '@angular/material';
+import { MatSort, MatTableDataSource , MatPaginator,  } from '@angular/material';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 

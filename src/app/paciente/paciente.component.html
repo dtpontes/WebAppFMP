@@ -1,3 +1,5 @@
+<h2>Lista de Pacientes</h2>
+
 <div class="search-div">
     <button mat-raised-button (click)="inserirPaciente()">
         <mat-icon>add</mat-icon>Cadastrar Paciente
@@ -38,12 +40,15 @@
         
                 <ng-container matColumnDef="creditos">
                     <mat-header-cell *matHeaderCellDef mat-sort-header>Créditos </mat-header-cell>
-                    <mat-cell *matCellDef="let paciente"> {{paciente.creditos}} </mat-cell>
+                    <mat-cell *matCellDef="let paciente">
+                        <div *ngIf="paciente.creditos < 0" class="negativo" >{{paciente.creditos}}</div>
+                        <div *ngIf="paciente.creditos >= 0" class="positivo" >{{paciente.creditos}}</div>
+                    </mat-cell>
                 </ng-container>
         
                 <ng-container matColumnDef="actionsColumn">
                     <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                    <mat-cell *matCellDef="let row">
+                    <mat-cell *matCellDef="let paciente">
                         <button mat-icon-button matTooltip="Editar" matTooltipPosition="left" (click)="editarPaciente(paciente)"><mat-icon>edit</mat-icon></button>
                         <button mat-icon-button matTooltip="Utilizar crédito" matTooltipPosition="above" (click)="utilizarCredito(paciente)"><mat-icon>exposure_neg_1</mat-icon></button>
                         <button mat-icon-button matTooltip="Comprar créditos" matTooltipPosition="right" (click)="utilizarCredito(paciente)"><mat-icon>monetization_on</mat-icon></button>                        

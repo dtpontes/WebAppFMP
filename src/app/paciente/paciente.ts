@@ -13,4 +13,5 @@ export class Paciente{
     cpf: string;
     rg: string;
     foto: string;
+    dataNascimento: string;
 }

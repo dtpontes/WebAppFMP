@@ -67,9 +67,7 @@ export class RestService {
 
   //PAciente
 
-  utilizarCredito (paciente): Observable<any> {  
-    console.log('paciente') ;
-    console.log(paciente) ;   
+  utilizarCredito (paciente): Observable<any> {        
     return this.http.put(endpoint + 'paciente/UtilizarCredito/' + paciente.pacienteId, JSON.stringify(paciente), httpOptions).pipe(
       tap(_ => console.log(`Crédito atualizado id=${paciente.pacienteId}`)),
       catchError(this.handleError<any>('updatePaciente'))
@@ -83,9 +81,7 @@ export class RestService {
 
   addPaciente (paciente: Paciente): Observable<any> { 
     var headers = new Headers();
-    headers.append('Content-Type', 'application/json');   
-    console.log(JSON.stringify(paciente));    
-    console.log(endpoint + 'values');   
+    headers.append('Content-Type', 'application/json');       
     return this.http.post<Paciente>(endpoint + 'paciente', JSON.stringify(paciente), httpOptions).pipe(
     tap((paciente) => console.log(`added paciente w/ id=${paciente.pacienteId}`)),
     catchError(this.handleError<any>('addPaciente'))
@@ -97,7 +93,10 @@ getPacientePorId(id): Observable<any> {
     map(this.extractData));
 }
 
-updatePaciente (id, paciente): Observable<any> {      
+updatePaciente (id, paciente): Observable<any> {  
+  console.log(paciente);
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');   
   return this.http.put(endpoint + 'paciente/' + id, JSON.stringify(paciente), httpOptions).pipe(
     tap(_ => console.log(`updated paciente id=${id}`)),
     catchError(this.handleError<any>('updatePaciente'))
