@@ -1,3 +1,4 @@
+import { PacienteCredito } from './paciente/pacientecredito';
 import { Paciente } from './paciente/paciente';
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -112,6 +113,19 @@ getCidadePorIdEstado(id): Observable<any> {
   return this.http.get(endpoint + 'paciente/ObterCidadesPorIdEstado/' + id).pipe(
     map(this.extractData));
 }
+
+addPacienteCredito (pacienteCredito: PacienteCredito): Observable<any> { 
+  var headers = new Headers();
+  headers.append('Content-Type', 'application/json');       
+  return this.http.post<PacienteCredito>(endpoint + 'paciente/pacientecredito', JSON.stringify(pacienteCredito), httpOptions).pipe(
+  tap((paciente) => console.log(`added paciente w/ id=${paciente.pacienteId}`)),
+  catchError(this.handleError<any>('addPaciente'))
+);
+}
+
+
+
+
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

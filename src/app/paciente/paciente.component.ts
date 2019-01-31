@@ -70,8 +70,6 @@ export class PacienteComponent implements OnInit {
   }
 
   utilizarCredito(paciente:Paciente) {
-    
-    
 
     this.dialogService.openConfirmDialog("Deseja utilizar o crédito do paciente?").
     afterClosed().subscribe(res=> {
@@ -84,6 +82,10 @@ export class PacienteComponent implements OnInit {
         });
       }
     });
+  }
+
+  adicionarCredito(paciente:Paciente) {
+    this.router.navigate(['/paciente-add-credito/'+paciente.pacienteId]);
   }
 
 }

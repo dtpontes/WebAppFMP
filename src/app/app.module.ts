@@ -17,6 +17,7 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { PacienteAddComponent } from './paciente-add/paciente-add.component';
 import { PacienteEditComponent } from './paciente-edit/paciente-edit.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { PacienteAddCreditoComponent } from './paciente-add-credito/paciente-add-credito.component';
 
 const appRoutes: Routes = [
   {
@@ -57,7 +58,12 @@ const appRoutes: Routes = [
     path: 'paciente-add',
     component: PacienteAddComponent,
     data: { title: 'Inserir Paciente' }
-  }
+  },
+  {
+    path: 'paciente-add-credito/:id',
+    component: PacienteAddCreditoComponent,
+    data: { title: 'Colocar créditos' }
+  },
 ];
 
 @NgModule({
@@ -71,7 +77,8 @@ const appRoutes: Routes = [
     PacienteComponent,
     PacienteAddComponent,
     PacienteEditComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    PacienteAddCreditoComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

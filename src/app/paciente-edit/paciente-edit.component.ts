@@ -14,9 +14,7 @@ export class PacienteEditComponent implements OnInit {
 
   constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-
-    this.paciente ={};
+  ngOnInit() {    
     this.rest.getPacientePorId(this.route.snapshot.params['id']).subscribe((data: {}) => {
        this.paciente = data;
     });

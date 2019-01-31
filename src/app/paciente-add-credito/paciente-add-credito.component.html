@@ -1,0 +1,41 @@
+<form  class="normal-form">
+
+    <h2>Adicionar Créditos</h2>
+
+    <!-- valor : number;
+    idTipoPagamento : number;
+    compensado: boolean;
+    qtdCreditos : number;   -->
+        
+    <mat-grid-list cols="1" rowHeight="400" >
+        <mat-grid-tile >
+                <div class="controles-container">
+                    <mat-form-field>
+                        <input  [(ngModel)]="paciente.nome"  [ngModelOptions]="{standalone: true}" matInput placeholder="Nome">
+                    </mat-form-field>
+
+                    <mat-form-field  >
+                        <mat-select placeholder="Tipo de Pagamento" [(value)]="pacienteCredito.idTipoPagamento">
+                          <mat-option  [value]="1">Dinheiro</mat-option>
+                          <mat-option  [value]="2">Cheque</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                               
+                    <mat-checkbox checked="true" (change)="OnChange($event)" class="example-margin" >
+                        <label>Compensado </label> 
+                    </mat-checkbox>
+
+                    <mat-form-field >
+                        <input [(ngModel)]="pacienteCredito.valor"  [ngModelOptions]="{standalone: true}" matInput placeholder="Valor">
+                    </mat-form-field>    
+                </div>
+        </mat-grid-tile>        
+    </mat-grid-list>
+    
+    
+    <div class="button-row">
+            <button mat-raised-button (click)="adicionarCredito()" color="primary" type="submit" >Salvar</button>
+            <button mat-raised-button color="warn" (click)="voltar()">Voltar</button>
+    </div>   
+    
+    </form>

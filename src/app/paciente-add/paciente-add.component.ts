@@ -24,14 +24,12 @@ export class PacienteAddComponent implements OnInit {
 
   constructor(public rest:RestService, private route: ActivatedRoute, private router: Router) {
 
-    this.paciente = new Paciente();
-    this.paciente.cidadeId = 1;
-    this.paciente.dataCadastro = '01/01/2019';   
-
-   }
+    
+    
+  }
 
   ngOnInit() {
-   this.getEstados();
+   
   }
 
   salvarPaciente() {
@@ -41,34 +39,7 @@ export class PacienteAddComponent implements OnInit {
   });
   }
 
-  getEstados() {
-    this.estados = [];
-    this.rest.getEstados().subscribe((data: []) => {
-      console.log(data);
-      this.estados = data;          
-      
-    });    
-  }
-
-  carregarEstados()
-  {
-    if(this.estadoSelecionado != null){
-      this.getCidadesPorIdEstado();
-    }
-    else{
-      this.cidades = [];
-    }
-    
-  }
-
-  getCidadesPorIdEstado() {
-    this.cidades = [];
-    this.rest.getCidadePorIdEstado(this.estadoSelecionado).subscribe((data: []) => {
-      console.log(data);
-      this.cidades = data;          
-      
-    });    
-  }
+  
 
   voltar() {
     //this.rest.addPaciente(this.paciente);

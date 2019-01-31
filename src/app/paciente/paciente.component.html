@@ -51,7 +51,7 @@
                     <mat-cell *matCellDef="let paciente">
                         <button mat-icon-button matTooltip="Editar" matTooltipPosition="left" (click)="editarPaciente(paciente)"><mat-icon>edit</mat-icon></button>
                         <button mat-icon-button matTooltip="Utilizar crédito" matTooltipPosition="above" (click)="utilizarCredito(paciente)"><mat-icon>exposure_neg_1</mat-icon></button>
-                        <button mat-icon-button matTooltip="Comprar créditos" matTooltipPosition="right" (click)="utilizarCredito(paciente)"><mat-icon>monetization_on</mat-icon></button>                        
+                        <button mat-icon-button matTooltip="Comprar créditos" matTooltipPosition="right" (click)="adicionarCredito(paciente)"><mat-icon>monetization_on</mat-icon></button>                        
                     </mat-cell>                    
                 </ng-container>
                   <ng-container matColumnDef="loading">

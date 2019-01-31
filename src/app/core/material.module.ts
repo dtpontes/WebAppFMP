@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   MatTableModule,
   Material.MatPaginatorModule,
   Material.MatSortModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatCheckboxModule
   ],
   exports: [
   CommonModule,
@@ -47,7 +49,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     Material.MatPaginatorModule,
     Material.MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule
    ],
 })
 export class CustomMaterialModule { }
